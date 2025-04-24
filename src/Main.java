@@ -11,5 +11,6 @@ public class Main {
         world.loadMap();
         Console console = new Console();
         console.startGame();
+        System.out.println("ffdf");
     }
 }
