@@ -10,5 +10,10 @@ public class Main {
         Console console = new Console();
         console.startGame();
         System.out.println("ffdf");
+        System.out.println("ffdf");
+        System.out.println("ffdf");
+        System.out.println("ffdf");
+        System.out.println("ffdf");
+        System.out.println("ffdf");
     }
 }
