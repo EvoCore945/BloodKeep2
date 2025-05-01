@@ -16,7 +16,7 @@ public class WorldMap {
 
     public boolean loadMap () throws FileNotFoundException {
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src/map.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Files/map.txt"))){
             String part;
             while ((part = br.readLine()) != null) {
                 String[] parts = part.split(";");
