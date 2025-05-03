@@ -1,12 +1,15 @@
 package characters;
 
+import World.PlayerClasses;
+import World.Weapon;
+
 public class Player {
 
     private String name;
     private static Player instance = new Player();
-    private int attackDamage;
     private int health;
-    private int gameClass;
+    private PlayerClasses playerClass;
+    private Weapon weapon;
 
     public static Player getInstance() {
         if (instance == null) {
@@ -14,7 +17,6 @@ public class Player {
         }
         return instance;
     }
-
     public String getName() {
         return name;
     }
@@ -27,12 +29,12 @@ public class Player {
         Player.instance = instance;
     }
 
-    public int getAttackDamage() {
-        return attackDamage;
+    public Weapon getWeapon() {
+        return weapon;
     }
 
-    public void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     public int getHealth() {
@@ -43,13 +45,11 @@ public class Player {
         this.health = health;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", attackDamage=" + attackDamage +
-                ", health=" + health +
-                ", gameClass=" + gameClass +
-                '}';
+    public PlayerClasses getPlayerClass() {
+        return playerClass;
+    }
+
+    public void setPlayerClass(PlayerClasses playerClass) {
+        this.playerClass = playerClass;
     }
 }

@@ -1,3 +1,4 @@
+import World.InitializePlayer;
 import World.WorldMap;
 import characters.Player;
 import command.Command;
@@ -41,11 +42,7 @@ public class Console {
 
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your name: ");
-        String playerName = scanner.nextLine();
-        Player player = Player.getInstance();
-        player.setName(playerName);
-        chooseClass();
+        InitializePlayer.initializePlayer();
         initializeCommands();
         System.out.println("Welcome to The BloodKeep!");
         System.out.println("Type 'hint' to see available commands.");
@@ -59,30 +56,6 @@ public class Console {
         }
         System.out.println("Game Over.");
     }
-    public void chooseClass(){
-        System.out.println("Choose one of these classes");
-        System.out.println("1 -> Swordsman");
-        System.out.println("2 -> Gunslinger");
-        System.out.println("3 --> Tank");
-        int response = sc.nextInt();
-        try {
-            switch (response) {
-                case 1:
-                    System.out.println("You chose Swordsman class !");
-                    break;
-                case 2:
-                    System.out.println("You chose Gunslinger class!");
-                    break;
-                case 3:
-                    System.out.println("You chose Tank class !");
-                    break;
-            }
-        } catch (InputMismatchException e) {
-            System.out.println("Wrong response!");
-
-        }
-        }
-
     }
 
 

@@ -1,3 +1,4 @@
+import World.Location;
 import World.WorldMap;
 
 import java.io.FileNotFoundException;
@@ -7,6 +8,7 @@ public class Main {
 
         WorldMap world = new WorldMap();
         world.loadMap();
+        world.loadItems("src/Files/items.txt");
         Console console = new Console();
         console.startGame();
 
