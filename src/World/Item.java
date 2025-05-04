@@ -4,6 +4,7 @@ public class Item {
     private String name;
     private String description;
     private ItemType type;
+    private int bonusHealth = 0;
 
 
     public Item(String name, String description, ItemType type) {
@@ -22,6 +23,19 @@ public class Item {
 
     public ItemType getType() {
         return type;
+    }
+
+    public int getBonusHealth() {
+        return bonusHealth;
+    }
+    //Item smallHeal = new Item("Small Heal", "Restores 20 HP", ItemType.CONSUMABLE);
+    //smallHeal.setBonusHealth(20);
+    //
+    //Item bigHeal = new Item("Large Heal", "Restores 50 HP", ItemType.CONSUMABLE);
+    //bigHeal.setBonusHealth(50);
+
+    public void setBonusHealth(int bonusHealth) {
+        this.bonusHealth = bonusHealth;
     }
 
     @Override

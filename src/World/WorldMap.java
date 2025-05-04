@@ -69,7 +69,13 @@ public class WorldMap {
 
     public HashMap<Integer, Location> getWorld() {
         return world;
+    }
+    public Location getLocationById(int id){
+        return world.get(id);
+    }
 
+    public HashMap<Integer, List<Item>> getLocationItems() {
+        return locationItems;
     }
 
     public String move(String direction) {

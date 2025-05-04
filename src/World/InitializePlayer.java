@@ -30,7 +30,6 @@ public class InitializePlayer {
                 sc.nextLine();
             }
         }
-        if(choice >= 1 &&choice<=3){
                 switch(choice){
 
                     case 1:
@@ -54,9 +53,8 @@ public class InitializePlayer {
                         player.setHealth(100);
                         player.setWeapon(new Weapon("Rebellion",20));
                 }
-            }else{
-                System.out.println("Invalid choice! Please select a number between 1 and 3.");
+
             }
         }
-    }
+
 
