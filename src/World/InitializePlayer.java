@@ -53,6 +53,7 @@ public class InitializePlayer {
                         player.setHealth(100);
                         player.setWeapon(new Weapon("Rebellion",20));
                 }
+        System.out.println("You have chosen " + player.getPlayerClass());
 
             }
         }

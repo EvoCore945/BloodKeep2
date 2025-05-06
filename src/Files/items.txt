@@ -2,3 +2,4 @@
 5;Potion of Clarity;A glowing blue potion.;CONSUMABLE
 1;Healing Herb;A fragrant herb that restores vitality.;CONSUMABLE
 6;Crypt Key;An old iron key with strange runes.;KEY
+0;Crypt Key;An old iron key with strange runes.;KEY

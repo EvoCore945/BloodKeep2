@@ -3,6 +3,7 @@ import World.WorldMap;
 import characters.Player;
 import command.Command;
 import command.End;
+import command.Examine;
 import command.Go;
 
 import java.util.HashMap;
@@ -14,6 +15,12 @@ public class Console {
 
     private Scanner sc;
     private Map<String, Command> commands = new HashMap<>();
+    private WorldMap worldMap;
+
+    public Console(WorldMap worldMap) {
+        this.sc = new Scanner(System.in);
+        this.worldMap = worldMap;
+    }
 
     public Console() {
         this.sc = new Scanner(System.in);
@@ -21,8 +28,9 @@ public class Console {
 
 
     private void initializeCommands() {
-        WorldMap worldMap = new WorldMap();
         commands.put("go", new Go());
+        commands.put("examine", new Examine(worldMap));
+
 
     }
 

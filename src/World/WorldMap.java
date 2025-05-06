@@ -51,6 +51,9 @@ public class WorldMap {
                     locationItems.put(locationId,new ArrayList<>());
                 }
                 locationItems.get(locationId).add(item);
+                System.out.println("Loaded item " + name + " into location " + locationId);
+                System.out.println("Item loaded at location " + locationId + ": " + name);
+
             }
             return true;
         } catch (IOException e) {

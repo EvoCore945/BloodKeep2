@@ -9,7 +9,7 @@ public class Main {
         WorldMap world = new WorldMap();
         world.loadMap();
         world.loadItems("src/Files/items.txt");
-        Console console = new Console();
+        Console console = new Console(world);
         console.startGame();
 
     }
