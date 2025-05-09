@@ -71,7 +71,7 @@ public class Examine extends Command{
                     System.out.println("Invalid item index " + (index + 1));
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input: " + selection);
+                System.out.println("Invalid input: " + selection );
             }
         }
         if(!takenItems.isEmpty()){

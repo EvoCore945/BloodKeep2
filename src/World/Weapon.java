@@ -27,9 +27,6 @@ public class Weapon {
 
     @Override
     public String toString() {
-        return "Weapon{" +
-                "name='" + name + '\'' +
-                ", damage=" + damage +
-                '}';
+        return   name + ", damage:" + damage;
     }
 }

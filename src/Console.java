@@ -1,10 +1,7 @@
 import World.InitializePlayer;
 import World.WorldMap;
 import characters.Player;
-import command.Command;
-import command.End;
-import command.Examine;
-import command.Go;
+import command.*;
 
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -30,7 +27,11 @@ public class Console {
     private void initializeCommands() {
         commands.put("go", new Go());
         commands.put("examine", new Examine(worldMap));
+        commands.put("stats", new PlayerInfo());
+        commands.put("backpack", new Backpack());
 
+    }
+    public static void initializeDemons(){
 
     }
 

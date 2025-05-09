@@ -52,4 +52,9 @@ public class Player {
     public void setPlayerClass(PlayerClasses playerClass) {
         this.playerClass = playerClass;
     }
+
+    @Override
+    public String toString() {
+        return "Your stats: \n" + "Name: " + name + "\nClass: " + playerClass + "\nWeapon: " + weapon.getName() + "\nHealth: " + health + "\nDamage: " + weapon.getDamage();
+    }
 }

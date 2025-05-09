@@ -38,10 +38,10 @@ public class Backpack extends Command{
         switch (choice) {
 
             case 1:
-
+                showBackpack();
                 break;
             case 2:
-
+                useItem(sc);
                 break;
             default:
                 System.out.println("Invalid selection");

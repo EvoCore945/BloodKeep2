@@ -1,5 +1,7 @@
 package World;
 
+import characters.Demon;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,6 +15,7 @@ public class WorldMap {
 
     private static HashMap<Integer, Location> world = new HashMap<>();
     private HashMap<Integer, List<Item>> locationItems = new HashMap<>();
+    private HashMap<Integer, Demon> locationDemos = new HashMap<>();
 
     private static int startingPoint = 0;
     private static int currentPosition = startingPoint;
@@ -62,6 +65,34 @@ public class WorldMap {
         }
 
     }
+    public boolean loadDemons(String filename) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(filename));
+        String line;
+        while((line = br.readLine()) !=null){
+            String[] parts = line.split(";");
+            if(parts.length !=4) continue;
+
+            int locationId = Integer.parseInt(parts[0].trim());
+            String name = parts[1].trim();
+            int health = Integer.parseInt(parts[2].trim());
+            int attack = Integer.parseInt(parts[3].trim());
+
+            Demon demon = new Demon(name, health, attack);
+            locationDemos.put(locationId,demon);
+            System.out.println("Loaded demon" + name + "into location" + locationId);
+        }
+        return true;
+    }
+    public Demon getDemonAtLocation(int locationId){
+        return locationDemos.get(locationId);
+    }
+    public void removeDemonAtLocation(int locationId){
+        locationDemos.remove(locationId);
+    }
+    public HashMap<Integer,Demon> getLocationDemos(){
+        return locationDemos;
+    }
+
     public Location getCurrentPosition2() {
         return world.get(currentPosition);
     }
