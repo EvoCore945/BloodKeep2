@@ -10,6 +10,7 @@ public class Player {
     private int health;
     private PlayerClasses playerClass;
     private Weapon weapon;
+    private int orbs = 0;
 
     public static Player getInstance() {
         if (instance == null) {
@@ -19,6 +20,20 @@ public class Player {
     }
     public String getName() {
         return name;
+    }
+    public void addOrbs(int amount){
+        orbs += amount;
+    }
+    public boolean spendOrbs(int amount){
+        if(orbs>=amount){
+            orbs -=amount;
+            return true;
+        }
+        return false;
+    }
+
+    public int getOrbs() {
+        return orbs;
     }
 
     public void setName(String name) {

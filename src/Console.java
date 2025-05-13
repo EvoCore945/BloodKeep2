@@ -29,6 +29,7 @@ public class Console {
         commands.put("examine", new Examine(worldMap));
         commands.put("stats", new PlayerInfo());
         commands.put("backpack", new Backpack());
+        commands.put("fight", new Fight(worldMap));
 
     }
     public static void initializeDemons(){
