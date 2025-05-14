@@ -1,7 +1,5 @@
 package World;
-
 import characters.Demon;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,19 +8,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 public class WorldMap {
-
     private static HashMap<Integer, Location> world = new HashMap<>();
     private HashMap<Integer, List<Item>> locationItems = new HashMap<>();
     private HashMap<Integer, Demon> locationDemos = new HashMap<>();
-
     private static int startingPoint = 0;
     private static int currentPosition = startingPoint;
-
-
-    public boolean loadMap () throws FileNotFoundException {
-
+    public void loadMap () throws FileNotFoundException {
         try (BufferedReader br = new BufferedReader(new FileReader("src/Files/map.txt"))){
             String part;
             while ((part = br.readLine()) != null) {
@@ -31,24 +23,26 @@ public class WorldMap {
                 Location location = new Location(parts[1], Integer.parseInt(parts[0]), Arrays.copyOfRange(parts, 2, 6));
                 world.put(Integer.valueOf(parts[0]), location);
             }
-            return true;
         } catch (IOException e) {
             System.out.println("Error while loading the map: " + e.getMessage());
-            return false;
         }
     }
-
-    public boolean loadItems(String filename) {
+    public void loadItems(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
+                if(parts.length < 5){
+                    System.out.println("Incorrect line in item file: " + line);
+                    continue;
+                }
                 int locationId = Integer.parseInt(parts[0]);
                 String name = parts[1];
                 String description = parts[2];
                 ItemType type = ItemType.valueOf(parts[3].toUpperCase());
+                int cost = Integer.parseInt(parts[4].trim());
 
-                Item item = new Item(name, description, type );
+                Item item = new Item(name, description, type,cost );
 
                 if(!locationItems.containsKey(locationId)){
                     locationItems.put(locationId,new ArrayList<>());
@@ -56,14 +50,10 @@ public class WorldMap {
                 locationItems.get(locationId).add(item);
                 System.out.println("Loaded item " + name + " into location " + locationId);
                 System.out.println("Item loaded at location " + locationId + ": " + name);
-
             }
-            return true;
         } catch (IOException e) {
             System.out.println("Error while loading items: " + e.getMessage());
-            return false;
         }
-
     }
     public boolean loadDemons(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -92,30 +82,24 @@ public class WorldMap {
     public HashMap<Integer,Demon> getLocationDemos(){
         return locationDemos;
     }
-
     public Location getCurrentPosition2() {
         return world.get(currentPosition);
     }
-
     static public int getCurrentPosition() {
         return currentPosition;
     }
-
     public HashMap<Integer, Location> getWorld() {
         return world;
     }
     public Location getLocationById(int id){
         return world.get(id);
     }
-
     public HashMap<Integer, List<Item>> getLocationItems() {
         return locationItems;
     }
-
     public String move(String direction) {
         int indexOFdirection;
         switch (direction.toLowerCase()) {
-
             case "north":
                 indexOFdirection = 0;
                 break;
@@ -134,8 +118,6 @@ public class WorldMap {
         int newLocation = world.get(currentPosition).getLocations()[indexOFdirection];
         if (newLocation == -1) {
             return "You cant go that way!";
-
-
         }
         currentPosition = newLocation;
         return "You moved to " + world.get(currentPosition).getName();

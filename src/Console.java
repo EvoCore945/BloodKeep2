@@ -30,6 +30,8 @@ public class Console {
         commands.put("stats", new PlayerInfo());
         commands.put("backpack", new Backpack());
         commands.put("fight", new Fight(worldMap));
+        commands.put("shop",new Shop());
+        commands.put("exit",new End());
 
     }
     public static void initializeDemons(){

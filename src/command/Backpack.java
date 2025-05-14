@@ -22,6 +22,7 @@ public class Backpack extends Command{
         }
     }
 
+
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);
@@ -77,10 +78,16 @@ public class Backpack extends Command{
 
          switch(type){
              case CONSUMABLE -> {
-                 int healedAmount = selectedItem.getBonusHealth();
-                 Player.getInstance().setHealth(Player.getInstance().getHealth() + healedAmount);
+                 int healedAmount;
+                 switch(selectedItem.getName()){
+                     case "SVitalStar":
+                         healedAmount = 10;
+                         Player.getInstance().setHealth(Player.getInstance().getHealth() + healedAmount);
+                 }
+
+
                  backpack.remove(index);
-                 System.out.println("You used " + selectedItem.getName() + "." + "Health restored to " + Player.getInstance().getHealth()+ "HP.");
+                 System.out.println("You used " + selectedItem.getName() + "." + "\n Health restored to " + Player.getInstance().getHealth()+ "HP.");
              }
              case KEY -> System.out.println("Keys are already used.");
              case LORE ->{

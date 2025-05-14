@@ -5,28 +5,29 @@ public class Item {
     private String description;
     private ItemType type;
     private int bonusHealth = 0;
+    private int cost;
 
 
-    public Item(String name, String description, ItemType type) {
+    public Item(String name, String description, ItemType type, int cost) {
         this.name = name;
         this.description = description;
         this.type = type;
+        this.cost = cost;
     }
-
     public String getName() {
         return name;
     }
-
     public String getDescription() {
         return description;
     }
-
     public ItemType getType() {
         return type;
     }
-
     public int getBonusHealth() {
         return bonusHealth;
+    }
+    public int getCost() {
+        return cost;
     }
     //Item smallHeal = new Item("Small Heal", "Restores 20 HP", ItemType.CONSUMABLE);
     //smallHeal.setBonusHealth(20);
@@ -39,11 +40,14 @@ public class Item {
     }
 
     @Override
+
     public String toString() {
         return "Item{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", type=" + type +
+                ", cost=" + cost +
                 '}';
     }
 }
+

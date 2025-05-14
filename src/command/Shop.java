@@ -1,9 +1,95 @@
 package command;
 
+import World.Item;
+import World.ItemType;
+import characters.Player;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Shop extends Command{
+
+    private static ArrayList<Item> shop = new ArrayList<>();
     @Override
     public String execute() {
+        System.out.println("Welcome to my shop brave warrior! \nDo you wanna buy(1) some merchandise or perhaps sell(2) something from your backpack? ");
+        Scanner sc = new Scanner(System.in);
+        String choice = sc.nextLine();
+        switch(choice){
+            case "1":
+                BuyItem();
+                break;
+            case "2":
+                SellItem();
+                break;
+        }
         return "";
+    }
+    public String BuyItem(){
+        System.out.println("Shop selection: ");
+        for(Item item : shop){
+            System.out.println(item.toString());
+        }
+        System.out.println("Type the name of the item you want to buy: ");
+        Scanner sc = new Scanner(System.in);
+        String choice = sc.nextLine();
+        for(Item item : shop){
+            if(item.getName().equalsIgnoreCase(choice)){
+                if(Player.getInstance().getOrbs() >= item.getCost()){
+                    Backpack.addItemToBackpack(item);
+                    Player.getInstance().setOrbs(Player.getInstance().getOrbs() - item.getCost());
+                    return "You have successfully bought " + item.getName() + "." + "\nYour total of orbs: " + Player.getInstance().getOrbs();
+                }else{
+                    return "Not enough orbs!";
+                }
+            }
+        }
+        return "Item not found in selection.";
+    }
+    public String SellItem(){
+      if(Backpack.getBackpack().isEmpty()){
+        return "Your backpack is empty! ";
+      }
+        System.out.println("Your items in backpack: ");
+      for (Item item : Backpack.getBackpack()){
+          System.out.println(item.toString());
+      }
+        System.out.println("Choose name of the item you want to sell: ");
+        Scanner sc = new Scanner(System.in);
+        String choice = sc.nextLine();
+
+        for (int i = 0; i < Backpack.getBackpack().size(); i++) {
+            Item item  = Backpack.getBackpack().get(i);
+            if(item.getName().equalsIgnoreCase(choice)){
+                int value = item.getCost();
+                Player.getInstance().setOrbs(Player.getInstance().getOrbs() + value);
+                Backpack.getBackpack().remove(i);
+                return "You have successfully sold item for " + value + "." + "\nYour total orbs: " + Player.getInstance().getOrbs();
+            }
+        }
+        return "Item was not found in backpack!";
+    }
+
+    public static void loadItemsFromShop(String filename) throws IOException {
+        shop.clear();
+        BufferedReader br = new BufferedReader(new FileReader(filename));
+        String line;
+        while ((line = br.readLine()) != null){
+            String[] parts = line.split(";");
+            if(parts.length !=4) continue;
+
+            String name = parts[0].trim();
+            String description = parts[1].trim();
+            ItemType typ = ItemType.valueOf(parts[2].trim());
+            int cost = Integer.parseInt(parts[3].trim());
+
+            Item item = new Item(name,description,typ,cost);
+            shop.add(item);
+        }
     }
 
     @Override
