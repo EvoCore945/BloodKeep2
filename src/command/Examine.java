@@ -24,18 +24,13 @@ public class Examine extends Command{
     public String execute() {
 
         int currentPosition = WorldMap.getCurrentPosition();
-        System.out.println("DEBUG: currentPosition = " + currentPosition);
-
         Location location = worldMap.getLocationById(currentPosition);
         if(location == null){
             return "Unknown location";
         }
         System.out.println("You are in: " + location.getName());
-
-        System.out.println("DEBUG: locationItems keys = " + worldMap.getLocationItems().keySet());
+        interestingRoomText(currentPosition);
         List<Item> items = worldMap.getLocationItems().getOrDefault(currentPosition,new ArrayList<>());
-        System.out.println("DEBUG: items found = " + items.size());
-
         if(roomItemsTaken.containsKey(currentPosition)){
             return "There are no items left in this room.";
         }

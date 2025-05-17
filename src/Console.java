@@ -1,10 +1,9 @@
 import World.InitializePlayer;
 import World.WorldMap;
-import characters.Player;
 import command.*;
 
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -26,12 +25,14 @@ public class Console {
 
     private void initializeCommands() {
         commands.put("go", new Go());
+        commands.put("commands",new ShowCommands());
         commands.put("examine", new Examine(worldMap));
         commands.put("stats", new PlayerInfo());
         commands.put("backpack", new Backpack());
         commands.put("fight", new Fight(worldMap));
-        commands.put("shop",new Shop());
+        commands.put("shop",new Shop(worldMap));
         commands.put("exit",new End());
+        commands.put("help", new Help());
 
     }
     public static void initializeDemons(){
@@ -39,7 +40,7 @@ public class Console {
     }
 
 
-    public void doCommand(){
+    public void doCommand() throws IOException {
         System.out.println("What do you want to do?");
         String command = sc.nextLine();
         command = command.trim();
@@ -57,7 +58,7 @@ public class Console {
         InitializePlayer.initializePlayer();
         initializeCommands();
         System.out.println("Welcome to The BloodKeep!");
-        System.out.println("Type 'hint' to see available commands.");
+        System.out.println("Type 'commands' to see available commands.");
 
         try{
             do{

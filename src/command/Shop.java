@@ -2,6 +2,8 @@ package command;
 
 import World.Item;
 import World.ItemType;
+import World.Location;
+import World.WorldMap;
 import characters.Player;
 
 import java.io.BufferedReader;
@@ -12,10 +14,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shop extends Command{
-
+    WorldMap worldMap;
     private static ArrayList<Item> shop = new ArrayList<>();
+    public Shop(WorldMap worldMap) {
+        this.worldMap = worldMap;
+    }
     @Override
     public String execute() {
+
+        String locationName = worldMap.getCurrentLocation().getName();
+        if(!locationName.equalsIgnoreCase("Merchant of the Hollow Veil")){
+            return "There is shop in this room!";
+        }
         System.out.println("Welcome to my shop brave warrior! \nDo you wanna buy(1) some merchandise or perhaps sell(2) something from your backpack? ");
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();
@@ -29,7 +39,7 @@ public class Shop extends Command{
         }
         return "";
     }
-    public String BuyItem(){
+    public void BuyItem(){
         System.out.println("Shop selection: ");
         for(Item item : shop){
             System.out.println(item.toString());
@@ -42,17 +52,21 @@ public class Shop extends Command{
                 if(Player.getInstance().getOrbs() >= item.getCost()){
                     Backpack.addItemToBackpack(item);
                     Player.getInstance().setOrbs(Player.getInstance().getOrbs() - item.getCost());
-                    return "You have successfully bought " + item.getName() + "." + "\nYour total of orbs: " + Player.getInstance().getOrbs();
+                    System.out.println( "You have successfully bought " + item.getName() + "." + "\nYour total of orbs: " + Player.getInstance().getOrbs());
+                    return;
                 }else{
-                    return "Not enough orbs!";
+                    System.out.println("Not enough orbs!");
+                    return;
                 }
             }
         }
-        return "Item not found in selection.";
+        System.out.println("Item not found in selection.");
+        return;
     }
-    public String SellItem(){
+    public void SellItem(){
       if(Backpack.getBackpack().isEmpty()){
-        return "Your backpack is empty! ";
+          System.out.println("Your backpack is empty! ");
+        return;
       }
         System.out.println("Your items in backpack: ");
       for (Item item : Backpack.getBackpack()){
@@ -68,10 +82,11 @@ public class Shop extends Command{
                 int value = item.getCost();
                 Player.getInstance().setOrbs(Player.getInstance().getOrbs() + value);
                 Backpack.getBackpack().remove(i);
-                return "You have successfully sold item for " + value + "." + "\nYour total orbs: " + Player.getInstance().getOrbs();
+                System.out.println("You have successfully sold item for " + value + "." + "\nYour total orbs: " + Player.getInstance().getOrbs());
+                return;
             }
         }
-        return "Item was not found in backpack!";
+        System.out.println("Item was not found in backpack!");
     }
 
     public static void loadItemsFromShop(String filename) throws IOException {

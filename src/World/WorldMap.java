@@ -79,10 +79,10 @@ public class WorldMap {
     public void removeDemonAtLocation(int locationId){
         locationDemos.remove(locationId);
     }
-    public HashMap<Integer,Demon> getLocationDemos(){
+    public HashMap<Integer,Demon> getLocationDemons(){
         return locationDemos;
     }
-    public Location getCurrentPosition2() {
+    public Location getCurrentLocation() {
         return world.get(currentPosition);
     }
     static public int getCurrentPosition() {

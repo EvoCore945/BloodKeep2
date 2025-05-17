@@ -1,1 +1,3 @@
-SVitalStar;A fragrant herb that restores vitality.;CONSUMABLE;10
+VitalStar_SMALL;A shiny star that restores small amount of health.;CONSUMABLE;10
+VitalStar_MEDIUM;A shiny star that restores decent amount of health.;CONSUMABLE;25
+VitalStar_BIG;A shiny star that restores large amount of health.;CONSUMABLE;55

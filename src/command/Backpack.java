@@ -55,9 +55,7 @@ public class Backpack extends Command{
              System.out.println((i + 1) + ". " + backpack.get(i).getName() + " - " + backpack.get(i).getDescription());
      }
      }
-
      public void useItem(Scanner sc){
-         int currentPosition = WorldMap.getCurrentPosition();
          showBackpack();
          System.out.println("Enter the number of the item you want to use:");
 
@@ -80,12 +78,19 @@ public class Backpack extends Command{
              case CONSUMABLE -> {
                  int healedAmount;
                  switch(selectedItem.getName()){
-                     case "SVitalStar":
-                         healedAmount = 10;
+                     case "VitalStar_SMALL":
+                         healedAmount = 20;
                          Player.getInstance().setHealth(Player.getInstance().getHealth() + healedAmount);
+                         break;
+                     case "VitalStar_MEDIUM":
+                         healedAmount = 35;
+                         Player.getInstance().setHealth(Player.getInstance().getHealth() + healedAmount);
+                         break;
+                     case "VitalStar_BIG":
+                         healedAmount = 70;
+                         Player.getInstance().setHealth(Player.getInstance().getHealth() + healedAmount);
+                         break;
                  }
-
-
                  backpack.remove(index);
                  System.out.println("You used " + selectedItem.getName() + "." + "\n Health restored to " + Player.getInstance().getHealth()+ "HP.");
              }
@@ -95,11 +100,8 @@ public class Backpack extends Command{
                  System.out.println(selectedItem.getDescription());
              }
              case WEAPON -> System.out.println("You cant use weapon in backpack. You can upgrade it in the Shop.");
-
          }
-
      }
-
     @Override
     public boolean exit() {
         return false;
