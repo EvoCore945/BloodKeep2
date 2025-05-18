@@ -1,5 +1,5 @@
-3;Blood Sword;A sword pulsing with dark blood energy.;WEAPON;5
-5;Potion of Clarity;A glowing blue potion.;CONSUMABLE;10
+3;VitalStar_MEDIUM;A shiny star that restores decent amount of health.;CONSUMABLE;25
+5;VitalStar_SMALL;A shiny star that restores small amount of health.;CONSUMABLE;10
 1;Healing Herb;A fragrant herb that restores vitality.;CONSUMABLE;
-6;Crypt Key;An old iron key with strange runes.;KEY;0
-0;Crypt Key;An old iron key with strange runes.;KEY;0
+6;Rusty Key;An old iron key with strange runes.;KEY;0
+0;Rusty Key 1;An old iron key that can open Hall of whispers.;KEY;0

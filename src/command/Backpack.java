@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class Backpack extends Command{
 
-    WorldMap worldmap;
     private static ArrayList<Item> backpack = new ArrayList<>();
 
     public static ArrayList<Item> getBackpack() {
@@ -21,8 +20,23 @@ public class Backpack extends Command{
             backpack.add(item);
         }
     }
-
-
+    public static boolean removeItemFromBackpackByName(String itemName){
+        for (int i = 0; i < Backpack.getBackpack().size(); i++) {
+            if(Backpack.getBackpack().get(i).getName().equalsIgnoreCase(itemName)){
+                Backpack.getBackpack().remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean hasItemName(String itemName){
+        for (Item item : Backpack.getBackpack()){
+            if(item.getName().equalsIgnoreCase(itemName)){
+                return true;
+            }
+        }
+        return false;
+    }
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);
@@ -94,7 +108,7 @@ public class Backpack extends Command{
                  backpack.remove(index);
                  System.out.println("You used " + selectedItem.getName() + "." + "\n Health restored to " + Player.getInstance().getHealth()+ "HP.");
              }
-             case KEY -> System.out.println("Keys are already used.");
+             case KEY -> System.out.println("Go to the locked location to use this key.");
              case LORE ->{
                  System.out.println("Reading some writings:");
                  System.out.println(selectedItem.getDescription());

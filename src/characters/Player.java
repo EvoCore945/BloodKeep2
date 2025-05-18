@@ -1,6 +1,9 @@
 package characters;
+import World.Item;
 import World.PlayerClasses;
 import World.Weapon;
+import command.Backpack;
+
 public class Player {
     private String name;
     private static Player instance = new Player();
@@ -13,6 +16,9 @@ public class Player {
             instance = new Player();
         }
         return instance;
+    }
+    public static boolean hasItem(String name){
+        return Backpack.getBackpack().contains(name);
     }
     public String getName() {
         return name;

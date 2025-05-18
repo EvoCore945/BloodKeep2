@@ -1,5 +1,8 @@
 package World;
 import characters.Demon;
+import characters.Player;
+import command.Backpack;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,6 +17,7 @@ public class WorldMap {
     private HashMap<Integer, Demon> locationDemos = new HashMap<>();
     private static int startingPoint = 0;
     private static int currentPosition = startingPoint;
+
     public void loadMap () throws FileNotFoundException {
         try (BufferedReader br = new BufferedReader(new FileReader("src/Files/map.txt"))){
             String part;
@@ -118,6 +122,21 @@ public class WorldMap {
         int newLocation = world.get(currentPosition).getLocations()[indexOFdirection];
         if (newLocation == -1) {
             return "You cant go that way!";
+
+
+        }else{
+            if(currentPosition == 16 && direction.equals("south") && !Backpack.hasItemName("Rusty Key 16")){
+                return "You need rusty key 1 to unlock this room";
+            }else{
+                Backpack.removeItemFromBackpackByName("Rusty Key 1");
+                System.out.println("Key has been taken out of  your backpack.");
+            }
+            if(currentPosition == 21 && direction.equals("south") && !Backpack.hasItemName("Shiny ancient Key")){
+                return "You need Shiny ancient Key to unlock this room";
+            }else{
+                Backpack.removeItemFromBackpackByName("Shiny ancient Key");
+                System.out.println("Key has been taken out of your backpack.");
+            }
         }
         currentPosition = newLocation;
         return "You moved to " + world.get(currentPosition).getName();
