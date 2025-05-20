@@ -122,23 +122,25 @@ public class WorldMap {
         int newLocation = world.get(currentPosition).getLocations()[indexOFdirection];
         if (newLocation == -1) {
             return "You cant go that way!";
-
-
-        }else{
-            if(currentPosition == 16 && direction.equals("south") && !Backpack.hasItemName("Rusty Key 16")){
-                return "You need rusty key 1 to unlock this room";
-            }else{
-                Backpack.removeItemFromBackpackByName("Rusty Key 1");
-                System.out.println("Key has been taken out of  your backpack.");
-            }
-            if(currentPosition == 21 && direction.equals("south") && !Backpack.hasItemName("Shiny ancient Key")){
-                return "You need Shiny ancient Key to unlock this room";
-            }else{
-                Backpack.removeItemFromBackpackByName("Shiny ancient Key");
-                System.out.println("Key has been taken out of your backpack.");
-            }
         }
+          if(currentPosition == 16 && direction.equals("south")) {
+              if (!Backpack.hasItemName("Rusty Key 16")) {
+                  return "You need rusty key 16 to unlock this room";
+              } else {
+                  Backpack.removeItemFromBackpackByName("Rusty Key 16");
+                  System.out.println("Key has been taken out of  your backpack.");
+              }
+          }
+            if(currentPosition == 21 && direction.equals("south")){
+                if(!Backpack.hasItemName("Shiny ancient Key")){
+                    return "You need Shiny ancient Key to unlock this room";
+                }else{
+                    Backpack.removeItemFromBackpackByName("Shiny ancient Key");
+                    System.out.println("Key has been taken out of  your backpack.");
+            }
+            }
         currentPosition = newLocation;
         return "You moved to " + world.get(currentPosition).getName();
+
+         }
     }
-}

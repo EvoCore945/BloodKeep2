@@ -1,4 +1,7 @@
 VitalStar_SMALL;A shiny star that restores small amount of health.;CONSUMABLE;10
 VitalStar_MEDIUM;A shiny star that restores decent amount of health.;CONSUMABLE;25
 VitalStar_BIG;A shiny star that restores large amount of health.;CONSUMABLE;55
+WeaponUpgrade_SMALL;Small damage upgrade for your weapon.;WEAPON_UPGRADE;35
+WeaponUpgrade_MEDIUM;Decent damage upgrade for your weapon.;WEAPON_UPGRADE;75
+WeaponUpgrade_BIG;Large damage upgrade for your weapon.;WEAPON_UPGRADE;120
 Shiny ancient Key;A shiny ancient key that can open something large...;KEY;200

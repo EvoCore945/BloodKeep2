@@ -113,7 +113,24 @@ public class Backpack extends Command{
                  System.out.println("Reading some writings:");
                  System.out.println(selectedItem.getDescription());
              }
-             case WEAPON -> System.out.println("You cant use weapon in backpack. You can upgrade it in the Shop.");
+             case WEAPON_UPGRADE ->{
+                 int bonusDamage;
+                 switch(selectedItem.getName()){
+                     case"WeaponUpgrade_SMALL":
+                         bonusDamage = 5;
+                         Player.getInstance().getWeapon().setDamage(Player.getInstance().getWeapon().getDamage() + bonusDamage);
+                         break;
+                     case"WeaponUpgrade_MEDIUM":
+                         bonusDamage = 10;
+                         Player.getInstance().getWeapon().setDamage(Player.getInstance().getWeapon().getDamage() + bonusDamage);
+                     case"WeaponUpgrade_BIG":
+                         bonusDamage = 15;
+                         Player.getInstance().getWeapon().setDamage(Player.getInstance().getWeapon().getDamage() + bonusDamage);
+                 }
+                 backpack.remove(index);
+                     System.out.println("You just upgraded your: " + Player.getInstance().getWeapon().getName() + " damage to: " +Player.getInstance().getWeapon().getDamage() );
+
+             }
          }
      }
     @Override

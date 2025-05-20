@@ -1,5 +1,5 @@
 package World;
 
 public enum ItemType {
-WEAPON,CONSUMABLE,KEY,LORE
+WEAPON_UPGRADE,CONSUMABLE,KEY,LORE
 }
