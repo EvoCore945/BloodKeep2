@@ -13,6 +13,7 @@ public class Main {
         Shop.loadItemsFromShop("src/Files/shop_items.txt");
         world.loadItems("src/Files/items.txt");
         world.loadDemons("src/Files/demons.txt");
+        world.loadNPCs("src/Files/npcs.txt");
         Console console = new Console(world);
         console.startGame();
 

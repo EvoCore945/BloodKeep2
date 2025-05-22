@@ -32,10 +32,7 @@ public class Console {
         commands.put("fight", new Fight(worldMap));
         commands.put("shop",new Shop(worldMap));
         commands.put("exit",new End());
-        commands.put("help", new Help());
-
-    }
-    public static void initializeDemons(){
+        commands.put("talk",new Talk(worldMap));
 
     }
 

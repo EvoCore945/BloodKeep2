@@ -1,6 +1,6 @@
 package World;
 import characters.Demon;
-import characters.Player;
+import characters.NPC;
 import command.Backpack;
 
 import java.io.BufferedReader;
@@ -14,7 +14,8 @@ import java.util.List;
 public class WorldMap {
     private static HashMap<Integer, Location> world = new HashMap<>();
     private HashMap<Integer, List<Item>> locationItems = new HashMap<>();
-    private HashMap<Integer, Demon> locationDemos = new HashMap<>();
+    private HashMap<Integer, Demon> locationDemons = new HashMap<>();
+    private HashMap<Integer, NPC> locationNPCs = new HashMap<>();
     private static int startingPoint = 0;
     private static int currentPosition = startingPoint;
 
@@ -59,7 +60,28 @@ public class WorldMap {
             System.out.println("Error while loading items: " + e.getMessage());
         }
     }
-    public boolean loadDemons(String filename) throws IOException {
+
+    public void loadNPCs(String fileName) throws IOException {
+      try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+          String line;
+          while((line = bufferedReader.readLine()) !=null){
+              String[] parts = line.split(";");
+              if(parts.length !=3) continue;
+              int locationId = Integer.parseInt(parts[0].trim());
+              String name = parts[1].trim();
+              String dialogue = parts[2].trim();
+              NPC npc = new NPC(name,dialogue);
+              locationNPCs.put(locationId,npc);
+              System.out.println("Loaded npc " + name + " into location " + locationId);
+          }
+
+      }catch (IOException e){
+          System.out.println("Error while loading npcs: " + e.getMessage());
+      }
+    }
+
+
+    public void loadDemons(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line;
         while((line = br.readLine()) !=null){
@@ -72,19 +94,22 @@ public class WorldMap {
             int attack = Integer.parseInt(parts[3].trim());
 
             Demon demon = new Demon(name, health, attack);
-            locationDemos.put(locationId,demon);
-            System.out.println("Loaded demon" + name + "into location" + locationId);
+            locationDemons.put(locationId,demon);
+            System.out.println("Loaded demon " + name + " into location " + locationId);
         }
-        return true;
     }
+
     public Demon getDemonAtLocation(int locationId){
-        return locationDemos.get(locationId);
+        return locationDemons.get(locationId);
     }
     public void removeDemonAtLocation(int locationId){
-        locationDemos.remove(locationId);
+        locationDemons.remove(locationId);
     }
     public HashMap<Integer,Demon> getLocationDemons(){
-        return locationDemos;
+        return locationDemons;
+    }
+    public NPC getNPCAtLocation(int locationId){
+        return locationNPCs.get(locationId);
     }
     public Location getCurrentLocation() {
         return world.get(currentPosition);

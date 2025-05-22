@@ -1,7 +1,5 @@
 package characters;
 
-import java.util.HashMap;
-
 public class Demon {
 
     private String name;
@@ -24,17 +22,6 @@ public class Demon {
 
     public int getAttackDamage() {
         return attackDamage;
-    }
-    public boolean isAlive(){
-        return health > 0;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
     }
 
     public void setHealth(int health) {
