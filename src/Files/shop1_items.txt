@@ -4,4 +4,4 @@ VitalStar_BIG;A shiny star that restores large amount of health.;CONSUMABLE;55
 WeaponUpgrade_SMALL;Small damage upgrade for your weapon.;WEAPON_UPGRADE;35
 WeaponUpgrade_MEDIUM;Decent damage upgrade for your weapon.;WEAPON_UPGRADE;75
 WeaponUpgrade_BIG;Large damage upgrade for your weapon.;WEAPON_UPGRADE;120
-Shiny ancient Key;A shiny ancient key that can open something large...;KEY;200
+Merchant of the crimson depths Key;A crimson key that can gave you access to the second merchant;KEY;100

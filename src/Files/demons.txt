@@ -1,1 +1,14 @@
-1;Abyss Watcher;30;5
+1;Whisper Fiend;30;5
+2;Veinspawn;35;6
+3;Thorn Beast;45;8
+4;Echo Ghoul;50;8
+6;Veil Stalker;60;10
+7;Crimson Wraith;70;12
+8;Breathless Horror;87;11
+10;Bramble Demon;100;13
+12;Iron Revenant;130;5
+19;Screamer Fiend;78;14
+20;Zareth(MINI BOSS);20;3
+22;Hollow Leech;99;11
+24;Hollow Pulse Fiend;110;14
+27;Harbinger of the Abyss(BOSS);20;4

@@ -156,13 +156,20 @@ public class WorldMap {
                   System.out.println("Key has been taken out of  your backpack.");
               }
           }
-            if(currentPosition == 21 && direction.equals("south")){
-                if(!Backpack.hasItemName("Shiny ancient Key")){
-                    return "You need Shiny ancient Key to unlock this room";
+            if(currentPosition == 26 && direction.equals("south")) {
+                if(!Backpack.hasAllBloodkeepShards()){
+                    return "The final door that leads to the heart of Bloodkeep is sealed by three ancient locks. You need all three Shards of the bloodkeep to open it.";
                 }else{
-                    Backpack.removeItemFromBackpackByName("Shiny ancient Key");
-                    System.out.println("Key has been taken out of  your backpack.");
+                    Backpack.removeItemFromBackpackByName("Echo shard of the BloodKeep");
+                    Backpack.removeItemFromBackpackByName("Bloodlust shard of the BloodKeep");
+                    Backpack.removeItemFromBackpackByName("Emerald shard of the BloodKeep");
+                    System.out.println("You used all the shards to open gate to heart of the Bloodkeep!");
+                }
+
             }
+            if(currentPosition == 24 && direction.equals("east")){
+                if(!Backpack.hasItemName("Merchant of the crimson depths Key")){
+                }
             }
         currentPosition = newLocation;
         return "You moved to " + world.get(currentPosition).getName();

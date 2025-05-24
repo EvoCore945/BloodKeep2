@@ -37,6 +37,9 @@ public class Backpack extends Command{
         }
         return false;
     }
+    public static boolean hasAllBloodkeepShards(){
+        return Backpack.hasItemName("Echo shard of the BloodKeep") && Backpack.hasItemName("Bloodlust shard of the BloodKeep") && Backpack.hasItemName("Emerald shard of the BloodKeep");
+    }
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);
@@ -117,20 +120,21 @@ public class Backpack extends Command{
                  int bonusDamage;
                  switch(selectedItem.getName()){
                      case"WeaponUpgrade_SMALL":
-                         bonusDamage = 5;
+                         bonusDamage = 10;
                          Player.getInstance().getWeapon().setDamage(Player.getInstance().getWeapon().getDamage() + bonusDamage);
                          break;
                      case"WeaponUpgrade_MEDIUM":
-                         bonusDamage = 10;
+                         bonusDamage = 15;
                          Player.getInstance().getWeapon().setDamage(Player.getInstance().getWeapon().getDamage() + bonusDamage);
                      case"WeaponUpgrade_BIG":
-                         bonusDamage = 15;
+                         bonusDamage = 25;
                          Player.getInstance().getWeapon().setDamage(Player.getInstance().getWeapon().getDamage() + bonusDamage);
                  }
                  backpack.remove(index);
                      System.out.println("You just upgraded your: " + Player.getInstance().getWeapon().getName() + " damage to: " +Player.getInstance().getWeapon().getDamage() );
 
              }
+             case SPECIAL_KEY -> System.out.println("Can be used only at the heart of BloodKeep.");
          }
      }
     @Override

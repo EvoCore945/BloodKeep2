@@ -10,7 +10,7 @@ public class Main {
 
         WorldMap world = new WorldMap();
         world.loadMap();
-        Shop.loadItemsFromShop("src/Files/shop_items.txt");
+        Shop.loadItemsFromShop("src/Files/shop1_items.txt");
         world.loadItems("src/Files/items.txt");
         world.loadDemons("src/Files/demons.txt");
         world.loadNPCs("src/Files/npcs.txt");

@@ -20,9 +20,9 @@
 19;Screaming Path(Hall);-1;-1;20;18
 20;Graven Crypt;-1;-1;-1;19
 21;Shrine of the Blood Saint;4;26;24;22
-22;The Drained Hollow;-1;-1;21;23
+22;The Drained Hollow(Hall);-1;-1;21;23
 23;Ossuary of Silence;-1;-1;22;-1
-24;PulseWalk;-1;-1;25;21
-25;The Dreaming Chamber;-1;-1;-1;24
+24;PulseWalk(Hall);-1;-1;25;21
+25;Merchant of the Crimson Depths;-1;-1;-1;24
 26;The Ember Crossing;21;27;-1;-1
 27;Heart of BloodKeep;26;-1;-1;-1

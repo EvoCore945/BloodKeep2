@@ -1,12 +1,15 @@
 package command;
 
 import World.Item;
+import World.ItemType;
 import World.WorldMap;
 import characters.Demon;
 import characters.Player;
 
 import java.util.Random;
 import java.util.Scanner;
+
+import static World.ItemType.SPECIAL_KEY;
 
 public class Fight extends Command{
 
@@ -47,6 +50,15 @@ public class Fight extends Command{
                     int gainedOrbs = new Random().nextInt(10,20);
                     System.out.println("You have won!");
                     player.addOrbs(gainedOrbs);
+                    if(demon.getName().equalsIgnoreCase("Zareth(Mini boss)")){
+                        System.out.println("The mini boss 'Zareth' has been defeated!\nYou have found Bloodlust shard of the BloodKeep");
+                        Item shard = new Item("Bloodlust shard of the BloodKeep","One of three shards needed to open the Heart of BloodKeep.", SPECIAL_KEY,0);
+                        Backpack.addItemToBackpack(shard);
+                    }
+                    if(demon.getName().equalsIgnoreCase("Harbinger of the Abyss(BOSS)")){
+                        System.out.println("Congratulations!\nYou have defeated Harbinger of the Abyss!");
+                        End.exit = true;
+                    }
                     world.removeDemonAtLocation(locationID);
                     return "Your gained orbs : " + gainedOrbs + "!";
                 }

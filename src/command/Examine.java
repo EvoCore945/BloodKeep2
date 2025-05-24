@@ -1,6 +1,7 @@
 package command;
 
 import World.Item;
+import World.ItemType;
 import World.Location;
 import World.WorldMap;
 import characters.Player;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+
+import static World.ItemType.SPECIAL_KEY;
 
 public class Examine extends Command{
 
@@ -48,7 +51,6 @@ public class Examine extends Command{
         String response = sc.nextLine().trim();
 
         if(response.equals("0")){
-          //  System.out.println("You chose not to take anything from this room.");
             return "You chose not to take anything from this room.";
         }
         String[] selections = response.split(";");
@@ -75,10 +77,51 @@ public class Examine extends Command{
             return "";
     }
     private void interestingRoomText(int position){
-        switch(position){
-          //todo budouci zajimave misntosti, co neco obsahuji
+        switch(position) {
+            case 23:
+                triggerOsuarryPuzzle();
+                break;
+            case 25 | 14:
+                System.out.println("Shop is available in this room.");
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 6:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+            case 19:
+            case 22:
+            case 24:
+                System.out.println("There could be a demon to fight in this room!");
+                break;
+            case 27:
+                System.out.println("Here stands in front of you Harbinger of the Abyss\nYou can end this by defeating him! ");
+                break;
+            case 20:
+                System.out.println("There might be someone strong...");
+
+
         }
     }
+
+    private void triggerOsuarryPuzzle() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("You hear a whisper: \n'You hear a whisper: 'I speak without a mouth and hear without ears.\nI have nobody, but I come alive with the wind.\n What am I?'");
+        System.out.println("Your answer:");
+        String response = sc.nextLine().trim().toLowerCase();
+        if (response.equalsIgnoreCase("echo")) {
+            System.out.println("Correct. \nYou feel something solid in your hand...\nIts an shard of the BloodKeep!");
+            Item shard = new Item("Echo shard of the BloodKeep", "One of three shards needed to open the Heart of BloodKeep.",SPECIAL_KEY, 0);
+            Backpack.addItemToBackpack(shard);
+        } else {
+            System.out.println("The silence remains... That is not the answer.");
+        }
+    }
+
 
     @Override
     public boolean exit() {

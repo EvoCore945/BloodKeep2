@@ -1,11 +1,9 @@
 package command;
-
 import World.Item;
 import World.ItemType;
 import World.Location;
 import World.WorldMap;
 import characters.Player;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,12 +18,18 @@ public class Shop extends Command{
         this.worldMap = worldMap;
     }
     @Override
-    public String execute() {
+    public String execute() throws IOException {
 
         String locationName = worldMap.getCurrentLocation().getName();
-        if(!locationName.equalsIgnoreCase("Merchant of the Hollow Veil")){
+        if(!(locationName.equalsIgnoreCase("Merchant of the Hollow Veil")||locationName.equalsIgnoreCase("Merchant of the Crimson Depths"))){
             return "There is shop in this room!";
         }
+        if(locationName.equalsIgnoreCase("Merchant of the Hollow Veil")){
+            loadItemsFromShop("src/Files/shop1_items.txt");
+        } else if (locationName.equalsIgnoreCase("Merchant of the Crimson Depths")) {
+            loadItemsFromShop("src/Files/shop2_items.txt");
+        }
+
         System.out.println("Welcome to my shop brave warrior! \nDo you wanna buy(1) some merchandise or perhaps sell(2) something from your backpack? ");
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();
