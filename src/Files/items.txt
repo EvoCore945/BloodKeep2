@@ -1,4 +1,9 @@
 3;VitalStar_MEDIUM;A shiny star that restores decent amount of health.;CONSUMABLE;25
 5;VitalStar_SMALL;A shiny star that restores small amount of health.;CONSUMABLE;10
 6;Rusty Key;An old iron key with strange runes.;KEY;0
-0;Rusty Key 16;An old iron key that can open Crimson Vault.;KEY;0
+11;VitalStar_BIG;A shiny star that restores large amount of health.;CONSUMABLE;55
+13;WeaponUpgrade_BIG;Large damage upgrade for your weapon.;WEAPON_UPGRADE;120
+9;Archivist's Record – Day 112;The corruption spreads faster than we imagined. Walls we carved with sacred runes now pulse with red veins. The Bloodkeep no longer listens. We sealed the first shard in the ossuary, behind the endless skulls, but I fear even death will not guard it for long...;LORE;0
+18;Torn Page from a Forgotten Journal;They said the Graven Crypt was empty. Lies. I heard it breathing. Something chained in bone and rage lurks there, wearing a king's crown of ash. We should never have buried it—we should have burned it.;LORE;0
+9;VitalStar_SMALL;A shiny star that restores small amount of health.;CONSUMABLE;10
+15;WeaponUpgrade_MEDIUM;Decent damage upgrade for your weapon.;WEAPON_UPGRADE;75

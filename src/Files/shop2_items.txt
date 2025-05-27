@@ -1,1 +1,3 @@
 Emerald shard of the BloodKeep;One of three shards that is needed to open the gate to the heart of the BloodKeep;SPECIAL_KEY;200
+Merchant’s Ledger – Secret Note;They come, the brave and the doomed, thinking the Bloodkeep holds glory. Let them try. I sell them relics, scraps, charms... but none ever return with their minds intact. Still, coin is coin. And the keep always hungers for more blood.;LORE;50
+Crimson key;An old iron key that can open Crimson Vault.;KEY;100

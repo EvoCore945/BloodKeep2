@@ -149,10 +149,10 @@ public class WorldMap {
             return "You cant go that way!";
         }
           if(currentPosition == 16 && direction.equals("south")) {
-              if (!Backpack.hasItemName("Rusty Key 16")) {
-                  return "You need rusty key 16 to unlock this room";
+              if (!Backpack.hasItemName("Crimson key")) {
+                  return "You need Crimson key to unlock this room";
               } else {
-                  Backpack.removeItemFromBackpackByName("Rusty Key 16");
+                  Backpack.removeItemFromBackpackByName("Crimson key");
                   System.out.println("Key has been taken out of  your backpack.");
               }
           }
@@ -168,7 +168,11 @@ public class WorldMap {
 
             }
             if(currentPosition == 24 && direction.equals("east")){
-                if(!Backpack.hasItemName("Merchant of the crimson depths Key")){
+                if(!Backpack.hasItemName("Crimson merchant key")){
+                    return "You need Crimson merchant key";
+                }else{
+                    Backpack.removeItemFromBackpackByName("Crimson merchant key");
+                    System.out.println("Key has been taken out of  your backpack.");
                 }
             }
         currentPosition = newLocation;

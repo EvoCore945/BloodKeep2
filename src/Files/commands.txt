@@ -3,7 +3,6 @@ Available commands:
           - go [direction] --> move to the location
           - backpack --> show or use your items in backpack
           - commands --> all available commands
-          - help --> if you are lost
           - stats --> your stats
           - examine --> search the room for items
           - talk --> talk with NPC

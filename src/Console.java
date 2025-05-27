@@ -2,6 +2,8 @@ import World.InitializePlayer;
 import World.WorldMap;
 import command.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,22 +52,33 @@ public class Console {
         }
     }
 
-    public void startGame() {
-        Scanner scanner = new Scanner(System.in);
+    public void startGame() throws IOException {
+        introductiontext();
         InitializePlayer.initializePlayer();
         initializeCommands();
         System.out.println("Welcome to The BloodKeep!");
         System.out.println("Type 'commands' to see available commands.");
-
-        try{
             do{
                 doCommand();
             }while(!End.exit);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
+
         System.out.println("Game Over.");
     }
+    private static void introductiontext(){
+
+        try(BufferedReader reader =new BufferedReader(new FileReader("src/Files/Introduction.txt"))){
+            String line;
+
+            while((line = reader.readLine())!= null){
+                System.out.println(line);
+                Thread.sleep(1000);
+            }
+        } catch(IOException | InterruptedException e){
+            System.out.println("Could not load introduction text.");
+        }
+    }
+
+
     }
 
 

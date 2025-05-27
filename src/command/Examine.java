@@ -43,7 +43,7 @@ public class Examine extends Command{
         }
         System.out.println("Items in this room: ");
         for (int i = 0; i < items.size(); i++) {
-            System.out.println((i + 1) + "." + items.get(i).getName() + " - " + items.get(i).getDescription());
+            System.out.println((i + 1) + "." + items.get(i).getName());
         }
         Scanner sc = new Scanner(System.in);
         System.out.println("Do you want to take any of these items?\n(Type numbers to take items or 0 to skip.)");

@@ -10,7 +10,7 @@ public class Player {
     private int health;
     private PlayerClasses playerClass;
     private Weapon weapon;
-    private int orbs = 2000;
+    private int orbs = 0;
     public static Player getInstance() {
         if (instance == null) {
             instance = new Player();

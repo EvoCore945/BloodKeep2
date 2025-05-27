@@ -1,1 +1,4 @@
-0;test1;Ahoj jak to jde?
+26;GateKeeper;"This gate does not yield to the unworthy. Three shards—of Bloodlust, Echo, and emerald—must be united. Only then shall the Bloodkeep open… or consume you."
+17;Elyon the Forgotten;"The seal… broken? After all these years? Gods above… I thought I would die in the dark. Thank you warrior."
+13;Darin Ironhand;"Been a long time since someone walked in here with a pulse. Take what you need—these old tools still remember how to strengthen steel. Just make sure your blade sings loud when the time comes."
+11;Elaria of the Thorns;"The land still breathes through pain. Rest here, warrior—let the roots mend what battle broke. Take these herbs, and walk with strength once more."

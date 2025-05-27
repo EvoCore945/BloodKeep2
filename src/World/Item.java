@@ -29,12 +29,7 @@ public class Item {
     @Override
 
     public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", type=" + type +
-                ", cost=" + cost +
-                '}';
+        return "Name: " + name + ", Description: " + description + ", Type: " + type + ", Cost: " + cost;
     }
 }
 

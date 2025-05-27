@@ -6,6 +6,7 @@ import World.WorldMap;
 import characters.Player;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Backpack extends Command{
@@ -50,9 +51,13 @@ public class Backpack extends Command{
         }
         System.out.println("TYPE: '1' - Writes all the items in your backpack.");
         System.out.println("TYPE: '2' - Use a specific item");
-
-        int choice = sc.nextInt();
-
+        int choice;
+        try {
+        choice = sc.nextInt();
+        }catch(InputMismatchException e){
+            System.out.println("Invalid input. Enter number!");
+            return "";
+        }
         switch (choice) {
 
             case 1:
