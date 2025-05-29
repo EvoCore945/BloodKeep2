@@ -53,8 +53,8 @@ public class WorldMap {
                     locationItems.put(locationId,new ArrayList<>());
                 }
                 locationItems.get(locationId).add(item);
-                System.out.println("Loaded item " + name + " into location " + locationId);
-                System.out.println("Item loaded at location " + locationId + ": " + name);
+                //System.out.println("Loaded item " + name + " into location " + locationId);
+               // System.out.println("Item loaded at location " + locationId + ": " + name);
             }
         } catch (IOException e) {
             System.out.println("Error while loading items: " + e.getMessage());
@@ -72,7 +72,7 @@ public class WorldMap {
               String dialogue = parts[2].trim();
               NPC npc = new NPC(name,dialogue);
               locationNPCs.put(locationId,npc);
-              System.out.println("Loaded npc " + name + " into location " + locationId);
+              //System.out.println("Loaded npc " + name + " into location " + locationId);
           }
 
       }catch (IOException e){
@@ -95,7 +95,7 @@ public class WorldMap {
 
             Demon demon = new Demon(name, health, attack);
             locationDemons.put(locationId,demon);
-            System.out.println("Loaded demon " + name + " into location " + locationId);
+            //System.out.println("Loaded demon " + name + " into location " + locationId);
         }
     }
 

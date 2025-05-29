@@ -2,5 +2,5 @@ package World;
 
 public enum PlayerClasses {
 
-    SWORDSMAN, GUNSLINGER, TANK, TRICKSTER
+    SWORDSMAN, GUNSLINGER, TRICKSTER
 }
