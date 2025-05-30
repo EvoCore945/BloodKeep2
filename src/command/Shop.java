@@ -17,6 +17,15 @@ public class Shop extends Command{
     public Shop(WorldMap worldMap) {
         this.worldMap = worldMap;
     }
+    /**
+     * Executes the shop functionality.
+     * This function handles the interaction between the player and the shop.
+     * It checks the current location of the player and loads the appropriate shop items.
+     * It then presents the player with the option to buy or sell items.
+     *
+     * @return A string message indicating the outcome of the shop interaction.
+     * @throws IOException If an error occurs while reading the shop items file.
+     */
     @Override
     public String execute() throws IOException {
 
@@ -43,6 +52,14 @@ public class Shop extends Command{
         }
         return "";
     }
+    /**
+     * Handles the buying process in the shop.
+     * Displays the available items, prompts the user to select an item,
+     * checks if the player has enough orbs to purchase the selected item,
+     * and updates the player's orbs and backpack accordingly.
+     *
+     * @return void
+     */
     public void BuyItem(){
         System.out.println("Shop selection: ");
         for(Item item : shop){
@@ -65,8 +82,15 @@ public class Shop extends Command{
             }
         }
         System.out.println("Item not found in selection.");
-        return;
     }
+    /**
+     * Handles the selling process in the shop.
+     * Displays the player's items in the backpack, prompts the user to select an item to sell,
+     * checks if the selected item exists in the backpack,
+     * and updates the player's orbs and backpack accordingly.
+     *
+     * @return void
+     */
     public void SellItem(){
       if(Backpack.getBackpack().isEmpty()){
           System.out.println("Your backpack is empty! ");
@@ -92,7 +116,14 @@ public class Shop extends Command{
         }
         System.out.println("Item was not found in backpack!");
     }
-
+    /**
+     * Loads items from a specified file into the shop inventory.
+     * The file should contain item data in the following format:
+     * name;description;type;cost
+     *
+     * @param filename The path to the file containing the item data.
+     * @throws IOException If an error occurs while reading the file.
+     */
     public static void loadItemsFromShop(String filename) throws IOException {
         shop.clear();
         BufferedReader br = new BufferedReader(new FileReader(filename));

@@ -41,6 +41,12 @@ public class Backpack extends Command{
     public static boolean hasAllBloodkeepShards(){
         return Backpack.hasItemName("Echo shard of the BloodKeep") && Backpack.hasItemName("Bloodlust shard of the BloodKeep") && Backpack.hasItemName("Emerald shard of the BloodKeep");
     }
+    /**
+     * Executes the backpack command.
+     * This method handles user input to either display all items in the backpack or use a specific item.
+     *
+     * @return String - An empty string, indicating that the command execution is successful.
+     */
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);
@@ -71,12 +77,29 @@ public class Backpack extends Command{
         }
         return "";
     }
+    /**
+     * Displays all items currently in the player's backpack.
+     *
+     * This method iterates through the backpack ArrayList and prints out each item's name and description.
+     * The items are numbered for easy selection when using the 'useItem' method.
+     *
+     * @return void - This method does not return any value.
+     */
      public void showBackpack(){
          System.out.println("These are the items in your backpack:");
          for (int i = 0; i < backpack.size(); i++) {
              System.out.println((i + 1) + ". " + backpack.get(i).getName() + " - " + backpack.get(i).getDescription());
      }
      }
+    /**
+     * Handles the use of items from the player's backpack.
+     *
+     * This method displays the player's backpack, prompts the user to select an item, and then uses the selected item.
+     * The method handles different types of items (CONSUMABLE, KEY, LORE, WEAPON_UPGRADE, SPECIAL_KEY) and performs the appropriate action.
+     *
+     * @param sc - A Scanner object used to read user input.
+     * @return void - This method does not return any value.
+     */
      public void useItem(Scanner sc){
          showBackpack();
          System.out.println("Enter the number of the item you want to use:");

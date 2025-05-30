@@ -22,7 +22,11 @@ public class Examine extends Command{
         this.worldMap = worldMap;
         this.roomItemsTaken = new HashMap<>();
     }
-
+    /**
+     * Executes the examine command. Allows the player to view items in the current location and choose to take them.
+     *
+     * @return A string message indicating the outcome of the command execution.
+     */
     @Override
     public String execute() {
 
@@ -76,6 +80,12 @@ public class Examine extends Command{
         }
             return "";
     }
+    /**
+     * This function is responsible for displaying interesting text based on the player's current location.
+     * It uses a switch statement to check the current position and triggers specific actions or prints messages.
+     *
+     * @param position The integer representing the current location of the player in the game world.
+     */
     private void interestingRoomText(int position){
         switch(position) {
             case 23:
@@ -103,11 +113,14 @@ public class Examine extends Command{
                 break;
             case 20:
                 System.out.println("There might be someone strong...");
-
-
         }
     }
-
+    /**
+     * This function triggers a puzzle in the game. The player is presented with a riddle and must provide an answer.
+     * If the answer is correct, an item is added to the player's backpack.
+     *
+     * @return void
+     */
     private void triggerOsuarryPuzzle() {
         Scanner sc = new Scanner(System.in);
         System.out.println("You hear a whisper: \n'You hear a whisper: 'I speak without a mouth and hear without ears.\nI have nobody, but I come alive with the wind.\n What am I?'");

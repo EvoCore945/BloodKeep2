@@ -3,6 +3,10 @@ package command;
 public class End extends Command{
 
     public static boolean exit;
+    /**
+     * This method is responsible for executing the end command.
+     * It will close the game.
+     */
     @Override
     public String execute() {
         setExit(true);

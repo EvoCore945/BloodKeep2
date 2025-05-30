@@ -6,7 +6,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InitializePlayer {
-
+    /**
+     * This function initializes a new player by taking user input for name and class selection.
+     * It uses a Scanner object to read user input from the console.
+     * The function prompts the user to enter their name and then creates a new Player instance using the Singleton pattern.
+     * It then asks the user to choose a class by displaying a menu of options and reading the user's choice.
+     * If the user enters an invalid choice, the function defaults to the Swordsman class.
+     * After setting the player's class, health, and weapon, the function prints a confirmation message.
+     */
     public static void initializePlayer(){
         Scanner sc =new Scanner(System.in);
 

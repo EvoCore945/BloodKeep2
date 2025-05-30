@@ -11,6 +11,12 @@ public class Player {
     private PlayerClasses playerClass;
     private Weapon weapon;
     private int orbs = 0;
+    /**
+     * This method returns the single instance of the Player class.
+     * If the instance does not exist, it will be created.
+     *
+     * @return The single instance of the Player class.
+     */
     public static Player getInstance() {
         if (instance == null) {
             instance = new Player();

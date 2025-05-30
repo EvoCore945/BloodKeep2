@@ -24,7 +24,12 @@ public class Console {
         this.sc = new Scanner(System.in);
     }
 
-
+    /**
+     * Initializes the available commands for the game console.
+     * The commands are stored in a HashMap where the key is the command name and the value is the corresponding Command object.
+     *
+     * @return void
+     */
     private void initializeCommands() {
         commands.put("go", new Go());
         commands.put("commands",new ShowCommands());
@@ -37,8 +42,12 @@ public class Console {
         commands.put("talk",new Talk(worldMap));
 
     }
-
-
+    /**
+     * Initializes the available commands for the game console.
+     * The commands are stored in a HashMap where the key is the command name and the value is the corresponding Command object.
+     *
+     * @return void
+     */
     public void doCommand() throws IOException {
         System.out.println("What do you want to do?");
         String command = sc.nextLine();
@@ -51,7 +60,12 @@ public class Console {
             System.out.println("---> Nondefined command");
         }
     }
-
+    /**
+     * Starts the game by loading the introduction text, initializing the player,
+     * setting up the available commands, and running the main game loop.
+     *
+     * @throws IOException If an error occurs while reading the introduction text file.
+     */
     public void startGame() throws IOException {
         introductiontext();
         InitializePlayer.initializePlayer();
@@ -64,6 +78,10 @@ public class Console {
 
         System.out.println("Game Over.");
     }
+
+    /**
+     * Loads and prints the introduction text from a file named "Introduction.txt".
+     */
     private static void introductiontext(){
 
         try(BufferedReader reader =new BufferedReader(new FileReader("src/Files/Introduction.txt"))){
@@ -77,8 +95,6 @@ public class Console {
             System.out.println("Could not load introduction text.");
         }
     }
-
-
     }
 
 

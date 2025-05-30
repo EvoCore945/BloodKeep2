@@ -20,7 +20,15 @@ public class Fight extends Command{
     public Fight(WorldMap world) {
         this.world = world;
     }
-
+    /**
+     * Executes the fight command. Handles player's interaction with a demon at the current location.
+     * If the player chooses to fight, they engage in a turn-based battle with the demon.
+     * The player's health and the demon's health are updated accordingly.
+     * If the player defeats the demon, they gain orbs and may receive a special item.
+     * If the player dies during the fight, the game ends.
+     *
+     * @return A string message indicating the outcome of the fight.
+     */
     @Override
     public String execute() {
         Scanner sc = new Scanner(System.in);

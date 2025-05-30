@@ -18,7 +18,12 @@ public class WorldMap {
     private HashMap<Integer, NPC> locationNPCs = new HashMap<>();
     private static int startingPoint = 0;
     private static int currentPosition = startingPoint;
-
+    /**
+     * Loads the game map from a text file.
+     * The map file contains information about each location, including its ID, name, and connected locations.
+     *
+     * @throws FileNotFoundException If the map file cannot be found.
+     */
     public void loadMap () throws FileNotFoundException {
         try (BufferedReader br = new BufferedReader(new FileReader("src/Files/map.txt"))){
             String part;
@@ -32,6 +37,13 @@ public class WorldMap {
             System.out.println("Error while loading the map: " + e.getMessage());
         }
     }
+    /**
+     * Loads items from a specified file into the game world.
+     * Each line in the file represents an item and its properties.
+     * The format of each line is: locationId;name;description;type;cost
+     *
+     * @param filename The name of the file containing the item data.
+     */
     public void loadItems(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -53,14 +65,18 @@ public class WorldMap {
                     locationItems.put(locationId,new ArrayList<>());
                 }
                 locationItems.get(locationId).add(item);
-                //System.out.println("Loaded item " + name + " into location " + locationId);
-               // System.out.println("Item loaded at location " + locationId + ": " + name);
             }
         } catch (IOException e) {
             System.out.println("Error while loading items: " + e.getMessage());
         }
     }
-
+    /**
+     * Loads NPCs from a specified file into the game world.
+     * Each line in the file represents an NPC and its properties.
+     * The format of each line is: locationId;name;dialogue
+     *
+     * @param fileName The name of the file containing the NPC data.
+     */
     public void loadNPCs(String fileName) throws IOException {
       try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
           String line;
@@ -72,15 +88,19 @@ public class WorldMap {
               String dialogue = parts[2].trim();
               NPC npc = new NPC(name,dialogue);
               locationNPCs.put(locationId,npc);
-              //System.out.println("Loaded npc " + name + " into location " + locationId);
           }
-
       }catch (IOException e){
           System.out.println("Error while loading npcs: " + e.getMessage());
       }
     }
-
-
+    /**
+     * Loads demons from a specified file into the game world.
+     * Each line in the file represents a demon and its properties.
+     * The format of each line is: locationId;name;health;attack
+     *
+     * @param filename The name of the file containing the demon data.
+     * @throws IOException If an error occurs while reading the file.
+     */
     public void loadDemons(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line;
@@ -95,7 +115,7 @@ public class WorldMap {
 
             Demon demon = new Demon(name, health, attack);
             locationDemons.put(locationId,demon);
-            //System.out.println("Loaded demon " + name + " into location " + locationId);
+
         }
     }
 
@@ -126,6 +146,15 @@ public class WorldMap {
     public HashMap<Integer, List<Item>> getLocationItems() {
         return locationItems;
     }
+    /**
+     * Moves the player to a new location based on the specified direction.
+     *
+     * @param direction The direction in which the player wants to move. It can be one of the following: "north", "south", "east", "west".
+     * @return A message indicating the result of the move. If the move is successful, it returns a message indicating the new location.
+     *        If the move is not possible due to an invalid direction or a blocked path, it returns an appropriate error message.
+     *        If the move is successful and the player encounters a special location (e.g., locked room, final door), it returns a message
+     *        describing the special condition and prompting the player to interact with it.
+     */
     public String move(String direction) {
         int indexOFdirection;
         switch (direction.toLowerCase()) {
