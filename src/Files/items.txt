@@ -7,3 +7,7 @@
 18;Torn Page from a Forgotten Journal;They said the Graven Crypt was empty. Lies. I heard it breathing. Something chained in bone and rage lurks there, wearing a king's crown of ash. We should never have buried it—we should have burned it.;LORE;0
 9;VitalStar_SMALL;A shiny star that restores small amount of health.;CONSUMABLE;10
 15;WeaponUpgrade_MEDIUM;Decent damage upgrade for your weapon.;WEAPON_UPGRADE;75
+17;VitalStar_MEDIUM;A shiny star that restores decent amount of health.;CONSUMABLE;25
+17;WeaponUpgrade_MEDIUM;Decent damage upgrade for your weapon.;WEAPON_UPGRADE;75
+17;VitalStar_SMALL;A shiny star that restores small amount of health.;CONSUMABLE;10
+17;WeaponUpgrade_BIG;Large damage upgrade for your weapon.;WEAPON_UPGRADE;75
